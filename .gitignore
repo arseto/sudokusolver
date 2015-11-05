@@ -1,0 +1,7 @@
+bin/*
+obj/*
+UpgradeLog.XML
+SudokuSolver.userprefs
+SudokuSolver.suo
+_UpgradeReport_Files/*
+Sudoku.pidb
