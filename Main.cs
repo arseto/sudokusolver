@@ -23,19 +23,9 @@ namespace Sudoku
 		}
 
 		public static void Main (string[] args)
-		{	
-            MainProg:
+		{
 			bool verbose = false;
 			if(args.Length>0) verbose = args[0].Equals("v");
-//			sud.AddRow(new int[]{5,3,0,0,7,0,0,0,0});
-//			sud.AddRow(new int[]{6,0,0,1,9,5,0,0,0});
-//			sud.AddRow(new int[]{0,9,8,0,0,0,0,6,0});
-//			sud.AddRow(new int[]{8,0,0,0,6,0,0,0,3});
-//			sud.AddRow(new int[]{4,0,0,8,0,3,0,0,1});
-//			sud.AddRow(new int[]{7,0,0,0,2,0,0,0,6});
-//			sud.AddRow(new int[]{0,6,0,0,0,0,2,8,0});
-//			sud.AddRow(new int[]{0,0,0,4,1,9,0,0,5});
-//			sud.AddRow(new int[]{0,0,0,0,8,0,0,7,9});
 			int i = 0;
 			int[][] matrix = new int[9][];
 			while(i<9)
@@ -54,7 +44,8 @@ namespace Sudoku
 					matrix[i] = intArr;		
 					i++;
 				}
-				else{
+				else
+				{
 					//invalid, please retype
 					Console.WriteLine("invalid line, please retype");
 					continue;
@@ -66,18 +57,18 @@ namespace Sudoku
 			
 			DateTime startTime = DateTime.Now;
 			Console.WriteLine ("Started: {0}", startTime);
- 			
+			
 			//SudokuSolver_old solver = new SudokuSolver_old(sud);
 			//solver.Iterate(false);
 			SudokuSolver solver = new SudokuSolver(matrix, verbose);
 			solver.Solve();
 
-  
+
 			DateTime stopTime = DateTime.Now;
 			Console.WriteLine ("Stopped: {0}", stopTime);
- 			Console.WriteLine ("solution generated: {0}", solver.possibleSolutions.Count);
+			Console.WriteLine ("solution generated: {0}", solver.possibleSolutions.Count);
 			Console.WriteLine ("backtracks: {0}", solver.deadendCount);
-	
+
 			foreach(int[][] solution in solver.possibleSolutions)
 			{
 				PrintMatrix(solution);
@@ -91,8 +82,7 @@ namespace Sudoku
 			Console.WriteLine ("in minutes     :" + elapsedTime.TotalMinutes);
 			Console.WriteLine ("in seconds     :" + elapsedTime.TotalSeconds);
 			Console.WriteLine ("in milliseconds:" + elapsedTime.TotalMilliseconds);
-			
-			goto MainProg;
+
 		}
 	
 		
